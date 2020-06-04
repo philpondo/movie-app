@@ -13,8 +13,10 @@ class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.create(
       title: params[:title],
+      director: params[:director],
       year: params[:year],
-      plot: params[:plot]
+      plot: params[:plot],
+      english: params[:english]
     )
     render 'show.json.jb'
   end
@@ -22,8 +24,10 @@ class Api::MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     @movie.title = params[:title] || @movie.title 
+    @movie.director = params[:director] || @movie.director 
     @movie.year = params[:year] || @movie.year
     @movie.plot = params[:plot] || @movie.plot
+    @movie.english = params[:english] || @movie.english
     @movie.save
     render 'show.json.jb'
   end

@@ -14,6 +14,8 @@ class Api::ActorsController < ApplicationController
     @actor = Actor.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
+      age: params[:age],
+      gender: params[:gender],
       known_for: params[:known_for]
     )
     render 'show.json.jb'
@@ -22,6 +24,8 @@ class Api::ActorsController < ApplicationController
   def update
     @actor = Actor.find(params[:id])
     @actor.first_name = params[:first_name] || @actor.first_name 
+    @actor.age = params[:age] || @actor.age 
+    @actor.gender = params[:gender] || @actor.gender 
     @actor.last_name = params[:last_name] || @actor.last_name
     @actor.known_for = params[:known_for] || @actor.known_for
     @actor.save
