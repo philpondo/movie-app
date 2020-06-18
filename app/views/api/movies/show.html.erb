@@ -1,0 +1,40 @@
+<h1><%= @movie.title %></h1>
+<h3><%= @movie.year %></h3>
+<h4><%= @movie.plot %></h4>
+
+<h4>Notable Actors:</h4> 
+<% @movie.actors.each do |actor| %>
+  <h3><%= actor.first_name + " " + actor.last_name %></h3>
+<% end %>
+
+<h4>Leave a review!</h4>
+<form action="/movies" method="post">
+  <div>
+    Name: <input type="text" name="name">
+  </div>
+  <div>
+    Email: <input type="text" name="email">
+  </div>
+  <div>
+    Review: <input type="text" name="review">
+  </div>
+  <div>
+   Rating: 
+    <select name="rating" id="rating-select">
+      <option value="">--Please rate 1-10--</option>
+      <option value="1"> 1 </option>
+      <option value="2"> 2 </option>
+      <option value="3"> 3 </option>
+      <option value="4"> 4 </option>
+      <option value="5"> 5 </option>
+      <option value="6"> 6 </option>
+      <option value="7"> 7 </option>
+      <option value="8"> 8 </option>
+      <option value="9"> 9 </option>
+      <option value="10"> 10 </option>
+    </select>
+  </div>
+  <div>
+    <input type="submit" value="Submit Review">
+  </div>
+</form>
